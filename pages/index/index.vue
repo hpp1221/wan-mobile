@@ -1,13 +1,17 @@
 <template>
 	<view class="container">
-		<view class="carousel-section">
+		<view class="header-wrap">
 			<!-- 标题栏和状态栏占位符 -->
-			<!-- <view class="titleNview-placing"></view> -->
-			<swiper class="carousel" circular autoplay interval="3000">
+			<view class="titleNview-placing"></view>
+			<view class="nav-wrap">
+				
+			</view>
+			<!-- 轮播图 -->
+			<!-- <swiper class="carousel" circular autoplay interval="3000">
 				<swiper-item v-for="(item, index) in carouselList" :key="index" class="carousel-item" @click="navToDetailPage({ title: '轮播广告' })">
 					<image :src="item.src" />
 				</swiper-item>
-			</swiper>
+			</swiper> -->
 		</view>
 		<view class="tabs-content"></view>
 	</view>

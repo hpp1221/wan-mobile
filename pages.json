@@ -1,18 +1,44 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-		    "path" : "pages/login/login",
-		    "style" :                                                                                    
-		    {
-		        "navigationBarTitleText": "",
-		        "enablePullDownRefresh": false,
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false,
 				"titleNView": false
-		    }
-		    
-		},{
+			}
+
+		},
+		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "app"
+				"navigationBarTitleText": "app",
+				"app-plus": {
+					"titleNView": {
+						"backgroundColor":"#FFFFFF",
+						"searchInput": {
+							"backgroundColor": "rgba(231, 231, 231,.7)",
+							"borderRadius": "16px",
+							"placeholder": "请输入",
+							"align": "left",
+							"placeholderColor": "#606266"
+						},
+						"buttons": [{
+							"fontSrc": "/static/yticon.ttf",
+							"text": "\ue60d",
+							"fontSize": "26",
+							"color": "#303133",
+							"float": "left",
+							"background": "rgba(0,0,0,0)"
+						}, {
+							"fontSrc": "/static/yticon.ttf",
+							"text": "\ue744",
+							"fontSize": "27",
+							"color": "#303133",
+							"background": "rgba(0,0,0,0)"
+						}]
+					}
+				}
 			}
 		}, {
 			"path": "pages/cart/cart",
@@ -35,39 +61,43 @@
 				"enablePullDownRefresh": false
 			}
 
-		}
-	    ,{
-            "path" : "pages/register/register",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        },
+		}, {
+			"path": "pages/register/register",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		},
 		{
-		    "path" : "pages/loginProtocol/loginProtocol",
-		    "style" :                                                                                    
-		    {
-		        "navigationBarTitleText": "",
-		        "enablePullDownRefresh": false,
+			"path": "pages/loginProtocol/loginProtocol",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false,
 				"titleNView": false,
-				"app-plus":{
-					"bounce":"none",
-					"scrollIndicator":"none"
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none"
 				}
-		    }
-		    
+			}
+
+		}, {
+			"path": "components/tabbar/tabbar",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
 		}
-    ],
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8",
-		"app-plus":{
-			"bounce":"none",
-			"scrollIndicator":"none"
+		"app-plus": {
+			"bounce": "none",
+			"scrollIndicator": "none"
 		}
 	},
 	"tabBar": {
@@ -76,26 +106,26 @@
 		"list": [{
 				"text": "首页",
 				"pagePath": "pages/index/index",
-				"iconPath": "static/icon/home.png",
-				"selectedIconPath": "static/icon/home-active.png"
+				"iconPath": "static/images/nor_proc.png",
+				"selectedIconPath": "static/images/nor-sel.png"
 			},
 			{
 				"text": "资讯",
 				"pagePath": "pages/news/news",
-				"iconPath": "static/icon/news.png",
-				"selectedIconPath": "static/icon/news-active.png"
+				"iconPath": "static/images/nor_proc.png",
+				"selectedIconPath": "static/images/nor-sel.png"
 			},
 			{
 				"text": "购物车",
 				"pagePath": "pages/cart/cart",
-				"iconPath": "static/icon/cart.png",
-				"selectedIconPath": "static/icon/cart-active.png"
+				"iconPath": "static/images/nor_proc.png",
+				"selectedIconPath": "static/images/nor-sel.png"
 			},
 			{
 				"text": "会员",
 				"pagePath": "pages/member/member",
-				"iconPath": "static/icon/member.png",
-				"selectedIconPath": "static/icon/member-active.png"
+				"iconPath": "static/images/nor_proc.png",
+				"selectedIconPath": "static/images/nor-sel.png"
 			}
 		]
 	}

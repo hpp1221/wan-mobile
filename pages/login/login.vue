@@ -28,7 +28,7 @@
 			    class="login-btn"
 				hover-class="btn-hover"
 			    type="default"
-				@click="onLogin">登录</button>
+				@tap="onLogin">登录</button>
 		</view>
 		<view class="is-agree-box">
 			<!-- <checkbox class="check-box" :checked="isAgree" /> -->
@@ -55,6 +55,9 @@
 		methods:{
 			onLogin(){
 				console.log('login');
+				uni.switchTab({
+					url:'/pages/index/index'
+				})
 			},
 			getCode(e){
 				e.preventDefault();

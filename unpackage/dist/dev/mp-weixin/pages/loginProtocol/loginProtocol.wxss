@@ -1,0 +1,61 @@
+.login-protocol-page {
+  width: 100%;
+  height: 100vh;
+}
+.login-protocol-page .page-title {
+  width: 100%;
+  height: 129.166666rpx;
+  font-size: 33.333333rpx;
+  font-weight: 400;
+  color: #6193E7;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.login-protocol-page .page-title .back-box {
+  width: 83.333333rpx;
+  height: 83.333333rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.login-protocol-page .page-title .back-box .arrow-back {
+  width: 33.333333rpx;
+  height: 33.333333rpx;
+  margin-left: 20.833333rpx;
+}
+.login-protocol-page .page-title .box-right {
+  width: 83.333333rpx;
+  height: 83.333333rpx;
+}
+.login-protocol-page .content-wrap {
+  height: calc(100% - 129.166666rpx - 25px);
+  margin: 0 27.777777rpx;
+  padding: 22.222222rpx 34.722222rpx 27.777777rpx 34.722222rpx;
+  -webkit-box-shadow: 4.166666rpx 4.166666rpx 11.111111rpx 0 rgba(97, 147, 231, 0.41);
+          box-shadow: 4.166666rpx 4.166666rpx 11.111111rpx 0 rgba(97, 147, 231, 0.41);
+  -webkit-border-radius: 13.888888rpx;
+          border-radius: 13.888888rpx;
+  background-color: #ffffff;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.login-protocol-page .content-wrap .content-box {
+  height: calc(100% - 27.777777rpx);
+  padding-bottom: 27.777777rpx;
+  overflow: scroll;
+  font-size: 12px;
+  font-weight: 400;
+  color: #A0A0A0;
+  line-height: 17px;
+}
+

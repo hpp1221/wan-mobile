@@ -1,0 +1,50 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/index/index",
+    "pages/cart/cart",
+    "pages/member/member",
+    "pages/news/news",
+    "pages/register/register",
+    "pages/loginProtocol/loginProtocol",
+    "components/tabbar/tabbar"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "selectedColor": "#007AFF",
+    "color": "#ccc",
+    "list": [
+      {
+        "text": "首页",
+        "pagePath": "pages/index/index",
+        "iconPath": "static/images/nor_proc.png",
+        "selectedIconPath": "static/images/nor-sel.png"
+      },
+      {
+        "text": "资讯",
+        "pagePath": "pages/news/news",
+        "iconPath": "static/images/nor_proc.png",
+        "selectedIconPath": "static/images/nor-sel.png"
+      },
+      {
+        "text": "购物车",
+        "pagePath": "pages/cart/cart",
+        "iconPath": "static/images/nor_proc.png",
+        "selectedIconPath": "static/images/nor-sel.png"
+      },
+      {
+        "text": "会员",
+        "pagePath": "pages/member/member",
+        "iconPath": "static/images/nor_proc.png",
+        "selectedIconPath": "static/images/nor-sel.png"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

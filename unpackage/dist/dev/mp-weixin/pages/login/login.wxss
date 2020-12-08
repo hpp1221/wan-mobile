@@ -1,0 +1,138 @@
+.login-page {
+  width: 100%;
+  height: 100%;
+}
+.login-page .login-title-text {
+  width: 100%;
+  height: 45.833333rpx;
+  font-size: 33.333333rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #6193E7;
+  line-height: 45.833333rpx;
+  text-align: center;
+  -webkit-background-clip: text;
+  padding-top: 41.666666rpx;
+}
+.login-page .input-box {
+  padding-top: 256.944444rpx;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.login-page .input-box .input-base {
+  width: 500rpx;
+  height: 44.444444rpx;
+  background: rgba(255, 255, 255, 0.5);
+  -webkit-box-shadow: 4.16rpx 4.16rpx 11.11rpx 0 rgba(97, 147, 231, 0.41);
+          box-shadow: 4.16rpx 4.16rpx 11.11rpx 0 rgba(97, 147, 231, 0.41);
+  -webkit-border-radius: 22.22rpx;
+          border-radius: 22.22rpx;
+  font-size: 18.055555rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #A0A0A0;
+  line-height: 25rpx;
+  padding: 0 22.222222rpx;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+.login-page .input-box .pla-class {
+  font-size: 18.055555rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #A0A0A0;
+  line-height: 25rpx;
+}
+.login-page .input-box .verification-code-box {
+  margin-top: 41.666666rpx;
+  position: relative;
+}
+.login-page .input-box .verification-code-box .get-code {
+  width: 166.666666rpx;
+  height: 44.444444rpx;
+  background: #50A0DD;
+  -webkit-border-radius: 22.222222rpx;
+          border-radius: 22.222222rpx;
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 20.833333rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #FFFFFF;
+  line-height: 44.444444rpx;
+  text-align: center;
+}
+.login-page .input-box .login-btn {
+  width: 305.555555rpx;
+  height: 44.444444rpx;
+  background: -webkit-linear-gradient(299deg, #53DCEE 0%, #50A0DD 51%, #5A4AC3 100%);
+  background: linear-gradient(151deg, #53DCEE 0%, #50A0DD 51%, #5A4AC3 100%);
+  -webkit-border-radius: 22.222222rpx;
+          border-radius: 22.222222rpx;
+  margin-top: 113.888888rpx;
+  font-size: 20.833333rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #FFFFFF;
+  line-height: 44.444444rpx;
+  text-align: center;
+}
+.login-page .input-box .btn-hover {
+  background: -webkit-linear-gradient(299deg, #50A0DD 0%, #5A4AC3 100%);
+  background: linear-gradient(151deg, #50A0DD 0%, #5A4AC3 100%);
+}
+.login-page .is-agree-box {
+  position: fixed;
+  left: 0;
+  bottom: 81.944444rpx;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+.login-page .is-agree-box .check-box {
+  width: 25rpx;
+  height: 25rpx;
+  -webkit-border-radius: 2.777777rpx;
+          border-radius: 2.777777rpx;
+  border: 1.38rpx solid #979797;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.login-page .is-agree-box .is-selected {
+  background: #53DCE8;
+  border: none;
+}
+.login-page .is-agree-box .is-selected .icon-checked {
+  font-size: 25rpx !important;
+  color: #FFFFFF;
+}
+.login-page .is-agree-box .tip-text {
+  width: 420.833333rpx;
+  font-size: 18.055555rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #555555;
+  line-height: 25rpx;
+}
+.login-page .is-agree-box .protocol-name {
+  border-bottom: 1px solid #D8D8D8;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #A0A0A0;
+  position: relative;
+}
+

@@ -58,13 +58,6 @@
 				}
 			}
 
-		}, {
-			"path": "components/tabbar/tabbar",
-			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
-			}
-
 		}
 	],
 	"globalStyle": {

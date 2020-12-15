@@ -1,0 +1,44 @@
+{
+  "id": "2266083",
+  "name": "wansan",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "643737",
+      "name": "分享",
+      "font_class": "7",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "1703551",
+      "name": "收藏",
+      "font_class": "shoucang",
+      "unicode": "e64f",
+      "unicode_decimal": 58959
+    },
+    {
+      "icon_id": "1020317",
+      "name": "消息",
+      "font_class": "xiaoxi",
+      "unicode": "e655",
+      "unicode_decimal": 58965
+    },
+    {
+      "icon_id": "5111279",
+      "name": "扫一扫",
+      "font_class": "saoyisao",
+      "unicode": "e666",
+      "unicode_decimal": 58982
+    },
+    {
+      "icon_id": "15726968",
+      "name": "形状-三角形",
+      "font_class": "xingzhuang-sanjiaoxing",
+      "unicode": "e652",
+      "unicode_decimal": 58962
+    }
+  ]
+}

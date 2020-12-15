@@ -14,28 +14,7 @@
 
 <style>
 	/*每个页面公共css */
-	page,
-	view {
-	    
-	}
+	@import './static/uni.css';
+	@import './static/iconfont/iconfont.css'
 	
-	page {
-	    min-height: 100%;  
-		background: #F2F2F2;
-	}
-	
-	template {
-	    
-	}
-	.status_bar{
-		height: var(--status-bar-height);
-		width: 100%;
-	}
-	::-webkit-scrollbar{
-		display: none;
-		width: 0 !important;
-		height: 0 !important;
-		-webkit-appearance: none;
-		background: transparent;
-	}
 </style>

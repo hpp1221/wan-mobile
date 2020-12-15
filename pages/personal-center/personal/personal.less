@@ -1,0 +1,83 @@
+.personal-container {
+	padding: 27.777777rpx 33.333333rpx 0 33.333333rpx;
+	.avatar-detail {
+		display: flex;
+		height: 152.777777rpx;
+		margin-bottom: 47.222222rpx;
+		.avatar {
+			position: relative;
+			width: 147.222222rpx;
+			height: 100%;
+			border-radius: 100%;
+			background: #d8d8d8;
+			margin-right: 19.444444rpx;
+			.membership-level {
+				position: absolute;
+				bottom: -13.888888rpx;
+				left: 50%;
+				transform: translateX(-50%);
+				width: 119.444444rpx;
+				height: 34.722222rpx;
+				line-height: 34.722222rpx;
+				background: #ffe3e3;
+				font-weight: 300;
+				color: #fc8181;
+				font-size: 22.222222rpx;
+				border-radius: 20.833333rpx;
+				border: 1.388888rpx solid #fc8181;
+				text-align: center;
+			}
+		}
+		.name-account {
+			flex: 1;
+			width: 0;
+			.name {
+				font-size: 25rpx;
+				font-weight: 500;
+				color: #3e3e3e;
+				padding: 20.833333rpx 0 22.222222rpx 0;
+			}
+			.detail-info {
+				font-size: 25rpx;
+				font-weight: 400;
+				color: #b6b6b6;
+				display: flex;
+				align-items: center;
+				.account-word {
+				}
+				.account-id {
+					padding: 0 16.666666rpx 0 22.222222rpx;
+				}
+				.verification {
+					text-align: center;
+					width: 129.166666rpx;
+					background: #ededed;
+					border-radius: 20.833333rpx;
+					border: 1.388888rpx solid #757575;
+					color: #757575;
+					font-size: 19.444444rpx;
+				}
+			}
+		}
+	}
+	.integral-wallet {
+		margin: 0 55.555555rpx;
+		height: 112.5rpx;
+		background: linear-gradient(128deg, #53dcee 0%, #50a0dd 100%);
+		box-shadow: 0px 2.777777rpx 5.555555rpx 0px #52c4e7;
+		border-radius: 31.944444rpx;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		.integral-month,
+		.wallet-month {
+			flex: 1;
+			text-align: center;
+			color: #ffffff;
+			font-size: 29.166666rpx;
+			.label {
+				font-size: 22.222222rpx;
+			}
+		}
+	}
+}

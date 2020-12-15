@@ -1,0 +1,102 @@
+.product-list {
+	width: 100%;
+	.uni-list-cell {
+		width: 100%;
+		height: 120px;
+		background: #ffffff;
+		box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.21);
+		border-radius: 8px;
+		margin-bottom: 8px;
+		.uni-media-list {
+			// padding: 7px 20px;
+			box-sizing: border-box;
+			display: flex;
+			width: 100%;
+			height: 100%;
+			.img-wrap {
+				width: 194.444444rpx;
+				height: 100%;
+				border-radius: 8px 0 0 8px;
+				background: rgba(112, 99, 202, 0.3);
+				.uni-media-list-logo {
+					width: 0;
+				}
+			}
+
+			.uni-media-list-body {
+				box-sizing: border-box;
+				height: 100%;
+				justify-content: space-around;
+				padding: 7px 10px 7px 10px;
+				flex: 1;
+				overflow: hidden;
+				.task-name,
+				.task-title {
+					height: 22px;
+					font-size: 16px;
+					color: #424242;
+					line-height: 22px;
+				}
+				.task-title {
+					height: 16px;
+					font-size: 11px;
+					color: #a0a0a0;
+					line-height: 16px;
+					margin-bottom: 9px;
+				}
+				.task-content {
+					display: flex;
+					.task-info {
+						flex: 0.5;
+						// height: 33px;
+						font-size: 12px;
+						color: #424242;
+						line-height: 17px;
+					}
+					.task-integral {
+						flex: 0.5;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						.num {
+							width: 70%;
+							height: 21px;
+							line-break: 21px;
+							color: #ffffff;
+							text-align: center;
+							background: linear-gradient(135deg, #53dcee 0%, #50a0dd 44%, #5a4ac3 100%);
+							border-radius: 5px;
+						}
+					}
+				}
+				.addi-info {
+					display: flex;
+					.specific-con {
+						flex: 0.5;
+						.num {
+							font-size: 12px;
+							font-weight: 500;
+							color: #a0a0a0;
+							line-height: 17px;
+							background: linear-gradient(157deg, #53dcee 0%, #50a0dd 37%, #5a4ac3 100%);
+							-webkit-background-clip: text;
+							-webkit-text-fill-color: transparent;
+						}
+						.num-info-person,
+						.num-info-time {
+							font-size: 12px;
+							color: #a0a0a0;
+							line-height: 17px;
+						}
+						.num-info-person {
+							margin-left: 4px;
+						}
+						.num-info-time {
+							margin-right: 4px;
+						}
+					}
+				}
+			}
+		}
+	}
+}

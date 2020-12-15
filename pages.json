@@ -1,7 +1,19 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-			"path": "pages/login/login",
+		    "path" : "pages/find/task-list/task-list",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "",
+				"navigationStyle":"custom",
+		        "app-plus": {
+					"titleNView":false
+				}
+		    }
+		    
+		}, 
+		{
+			"path": "pages/login-protocol/login/login",
 			"style": {
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": false,
@@ -9,45 +21,25 @@
 			}
 
 		},
+	
 		{
-			"path": "pages/index/index",
+			"path": "pages/find/task-detail/task-detail",
 			"style": {
-				"navigationStyle": "custom",
-				"app-plus": {
-					"titleNView": false
+				"navigationBarTitleText": "任务详情",
+				"navigationBarBackgroundColor":"#F2F2F2",
+				"app-plus":{
+					"titleNView":{
+						"titleColor":"#6193E7",
+						"backButton":{
+							"color":"#6193E7"
+						}
+					}
 				}
+				
 			}
-		}, {
-			"path": "pages/cart/cart",
-			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
-			}
-
-		}, {
-			"path": "pages/member/member",
-			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
-			}
-
-		}, {
-			"path": "pages/news/news",
-			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
-			}
-
-		}, {
-			"path": "pages/register/register",
-			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
-			}
-
 		},
 		{
-			"path": "pages/loginProtocol/loginProtocol",
+			"path": "pages/login-protocol/loginProtocol/loginProtocol",
 			"style": {
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": false,
@@ -59,7 +51,25 @@
 			}
 
 		}
-	],
+        ,{
+            "path" : "pages/personal-center/personal/personal",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "navigationStyle": "custom"
+            }
+            
+        }
+        ,{
+            "path" : "pages/mission-square/list/list",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
@@ -74,26 +84,20 @@
 		"selectedColor": "#007AFF",
 		"color": "#ccc",
 		"list": [{
-				"text": "首页",
-				"pagePath": "pages/index/index",
+				"text": "发现",
+				"pagePath": "pages/find/task-list/task-list",
 				"iconPath": "static/images/nor_proc.png",
 				"selectedIconPath": "static/images/nor-sel.png"
 			},
 			{
-				"text": "资讯",
-				"pagePath": "pages/news/news",
+				"text": "任务广场",
+				"pagePath": "pages/mission-square/list/list",
 				"iconPath": "static/images/nor_proc.png",
 				"selectedIconPath": "static/images/nor-sel.png"
 			},
 			{
-				"text": "购物车",
-				"pagePath": "pages/cart/cart",
-				"iconPath": "static/images/nor_proc.png",
-				"selectedIconPath": "static/images/nor-sel.png"
-			},
-			{
-				"text": "会员",
-				"pagePath": "pages/member/member",
+				"text": "我的",
+				"pagePath": "pages/personal-center/personal/personal",
 				"iconPath": "static/images/nor_proc.png",
 				"selectedIconPath": "static/images/nor-sel.png"
 			}

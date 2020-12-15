@@ -5,7 +5,7 @@
 		</view>
 		<view class="page-title">
 			<view class="back-box" @tap="back">
-				<image class="arrow-back" src="../../static/arrowLeft.svg"></image>
+				<image class="arrow-back" src="../../../static/arrowLeft.svg"></image>
 			</view>
 			<view>登录协议</view>
 			<view class="box-right"></view>

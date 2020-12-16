@@ -1,26 +1,27 @@
 let BaseUrl = '';
-if (process.env.NODE_ENV === 'development') {
-	BaseUrl = 'http://192.168.8.52:8080/';
-} else {
-	BaseUrl = 'http://192.168.8.52:8080/';
-};
+
+// if (process.env.NODE_ENV === 'development') {
+// 	BaseUrl = 'http://47.96.4.213';
+// } else {
+// 	BaseUrl = 'http://47.96.4.213';
+// };
 
 const request = (options) => {
 	return new Promise((resolve, reject) => {
 		const Token = uni.getStorageSync('Token') || 'c38938ac8450419ea58f40fca0152a88';
 		const method = options.method.toUpperCase(); //小写改为大写
-		uni.showLoading({
-			title: "加载中"
-		})
+		// uni.showLoading({
+		// 	title: "加载中"
+		// })
 		uni.request({
 			url: BaseUrl + options.url,
 			method: method,
 			data: options.data,
-			dataType: 'json',
+			// dataType: 'json',
 			header: {
-				"x-token": Token,
-				'X-Requested-With': 'XMLHttpRequest',
-				'content-type': method == 'POST' ? 'application/x-www-form-urlencoded' : 'application/json',
+				// "x-token": Token,
+				// 'X-Requested-With': 'XMLHttpRequest',
+				'content-type': 'application/json'
 			},
 			success: res => {
 				console.log("gjhgj", res)
@@ -70,7 +71,7 @@ export default {
 		options.url = url;
 		options.data = data;
 		options.method = 'post';
-		return trequest(options)
+		return request(options)
 	},
 	put(url, data = {}, options = {}) {
 		options.url = url

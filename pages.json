@@ -1,6 +1,15 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
+			"path": "pages/login-protocol/login/login",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false,
+				"titleNView": false
+			}
+		
+		},
+		{
 		    "path" : "pages/find/task-list/task-list",
 		    "style" :                                                                                    
 		    {
@@ -12,16 +21,6 @@
 		    }
 		    
 		}, 
-		{
-			"path": "pages/login-protocol/login/login",
-			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false,
-				"titleNView": false
-			}
-
-		},
-	
 		{
 			"path": "pages/find/task-detail/task-detail",
 			"style": {

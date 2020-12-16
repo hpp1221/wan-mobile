@@ -1,7 +1,13 @@
 <script>
 	export default {
 		onLaunch: function() {
-			console.log('App Launch')
+			console.log('App Launch');
+			var pinf = plus.push.getClientInfo();
+			// uni.showToast({
+			// 	"title":pinf.token,
+			// 	icon:"none",
+			// 	duration:1000000
+			// });
 		},
 		onShow: function() {
 			console.log('App Show')

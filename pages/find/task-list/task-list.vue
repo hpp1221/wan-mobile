@@ -101,6 +101,7 @@ export default {
 	onLoad() {
 		// this.adpid = this.$adpid;
 		this.getList();
+		
 	},
 	onPullDownRefresh() {
 		setTimeout(function() {

@@ -24,8 +24,8 @@
 			<!-- nav -->
 			<scroll-view scroll-x class="navs">
 				<view class="items">
-					<view class="nav-item" :class="index == tabSelected ? 'nav-select-item' : ''" v-for="(item, index) in navs" :key="index" @tap="tabSelect" :data-id="index">
-						{{ item }}
+					<view class="nav-item" :class="item.id == tabSelected ? 'nav-select-item' : ''" v-for="(item, index) in navs" :key="item.id" @tap="tabSelect" :data-id="item.id">
+						{{ item.name }}
 					</view>
 				</view>
 			</scroll-view>
@@ -39,7 +39,7 @@
 				</view>
 			</view>
 			<!-- list -->
-			<taskListComponent :listData="listData" source="indexPage"></taskListComponent>
+			<taskListComponent :listData="taskData" source="indexPage"></taskListComponent>
 			<uniLoadMore :status="status" :icon-size="16" :content-text="contentText" />
 		</view>
 	</view>
@@ -48,7 +48,8 @@
 <script>
 import taskListComponent from '@/components/task-list-component/task-list-component.vue';
 import uniLoadMore from '@/components/uni-load-more/uni-load-more.vue';
-var dateUtils = require('@/utils/common.js').dateUtils;
+	import {formatDuring,dateUtils} from '@/utils/common.js';
+import {getCategoryListApi,getTaskListApi} from '@/apis/index.js';
 export default {
 	components: {
 		uniLoadMore,
@@ -61,7 +62,7 @@ export default {
 				{ id: 2, src: 'url2', img: '/static/temp/banner3.jpg' },
 				{ id: 3, src: 'url3', img: '/static/temp/banner4.jpg' }
 			],
-			navs: ['全部', '游戏', '好物', '小说', '金融', '认证','金融', '认证'],
+			navs: [{id:-1,name:'全部'}],
 			conditions: [
 				{
 					text: '开始时间',
@@ -84,9 +85,14 @@ export default {
 					sortUp: false
 				}
 			],
-			tabSelected: 0,
+			tabSelected: -1,
 			conditionSelected: 0,
 			listData: [],
+			taskData:[],
+			pageInfo:{
+				page:1,
+				total:0
+			},
 			last_id: '',
 			reload: false,
 			status: 'more',
@@ -99,8 +105,14 @@ export default {
 		};
 	},
 	onLoad() {
+		// uni.showToast({
+		// 	title:'ffff',
+		// 	duration:2000
+		// })
 		// this.adpid = this.$adpid;
-		this.getList();
+		// this.getList();
+		this.getCategoryList();
+		this.getTaskList();
 		
 	},
 	onPullDownRefresh() {
@@ -108,12 +120,16 @@ export default {
 			uni.stopPullDownRefresh();
 		}, 1000);
 		this.reload = true;
-		this.last_id = '';
-		this.getList();
+		this.getTaskList();
 	},
 	onReachBottom() {
-		this.status = 'more';
-		this.getList();
+		if(!this.reload){
+			this.reload = true;
+			this.status = 'more';
+			this.pageInfo.page +=1;
+			this.getTaskList();
+		}
+	
 	},
 
 	methods: {
@@ -127,6 +143,47 @@ export default {
 				sortUp: !this.conditions[this.conditionSelected].sortUp
 			};
 			this.$set(this.conditions, this.conditionSelected, obj);
+		},
+		getCategoryList(){
+		
+			getCategoryListApi().then(res=>{
+				uni.showToast({
+					title:JSON.stringify(res)
+				})
+				if(res.code !== 0)return;
+			
+				this.navs = [...this.navs,...res.data];
+			})
+		},
+		getTaskList(){
+			const params ={
+				page:this.pageInfo.page,
+				name:'',
+				category_id:0,
+				sort_type:1
+			};
+			this.reload = true;
+			getTaskListApi(params).then(res=>{
+				if(res.code !== 0)return this.reload = false,this.pageInfo = {page:1,total:0};
+				const list = res.data.data;
+					const total = res.data.total;
+					if(list){
+						list.map(item=>{
+							item.remaining_time=formatDuring(item.remaining_time)
+						});
+						this.taskData = [...this.taskData,...list];
+						if(this.taskData.length >=total){
+							this.reload = true;
+							this.status="nomore";
+						}else{
+							this.reload = false;
+							this.status="loading";
+						}
+					}else{
+						this.reload = true;
+						this.status="nomore";
+					}
+			})
 		},
 		getList() {
 			var data = {

@@ -1,25 +1,39 @@
 <template>
-	<view class="task-container">
-		<view class="banner"></view>
+	<view class="task-container" v-if="detailInfo">
+		<!-- 轮播图 -->
+		<view class="banner">
+			<swiper circular="true" autoplay="true">
+				<swiper-item v-for="(swiper, index) in detailInfo.info_pic_url" :key="index"><image :src="swiper" @tap="toSwiper(swiper)"></image></swiper-item>
+			</swiper>
+		</view>
 		<view class="remain-time-wrap">
 			<text class="word">剩余时间</text>
-			<view class="times">
-				<text class="time">11</text>
-				<text class="time">11</text>
-				<text class="time">11</text>
-			</view>
+			<uni-countdown
+				color="#ffffff"
+				padding="2px 3px"
+				margin="0 3px"
+				:splitor="false"
+				borderRadius="4px"
+				backgroundColor="#566ece"
+				:day="detailInfo.day"
+				:hour="detailInfo.hour"
+				:minute="detailInfo.min"
+				:second="detailInfo.sec"
+			></uni-countdown>
 		</view>
 		<view class="task-name-integral">
-			<text class="task-name ellipsis-1">任务名称的话覅hi hi和恢复</text>
+			<text class="task-name ellipsis-1">{{ detailInfo.name }}</text>
 			<view class="integral-wrap">
-				<text class="integral">100</text>
+				<text class="integral">{{ detailInfo.commission }}</text>
 				<text class="word">积分</text>
 			</view>
 		</view>
-		<view class="subtitle-wrap"><text class="content ellipsis-1">副标题副标题的宁静而看</text></view>
+		<view class="subtitle-wrap">
+			<text class="content ellipsis-1">{{ detailInfo.company_name }}</text>
+		</view>
 		<view class="labels-completed">
 			<view class="labels-wrap">
-				<block v-for="(value, index) in labels" :key="index">
+				<block v-for="(value, index) in detailInfo.tag" :key="index">
 					<view class="single-label">
 						<text>{{ value }}</text>
 					</view>
@@ -35,15 +49,18 @@
 		</view>
 		<view class="task-labels">
 			<text class="label">任务类型:</text>
-			<text class="value ellipsis-1">任务类型到此为止打黑二十字个</text>
+			<text class="value ellipsis-1">{{ detailInfo.category_name }}</text>
 		</view>
 		<view class="task-labels">
 			<text class="label">任务描述:</text>
-			<text class="value ellipsis-3">述任到此为止六十六个字</text>
+			<text class="value ellipsis-3">{{ detailInfo.short_intr }}</text>
 		</view>
 		<view class="task-labels operation-step">
 			<text class="label">操作步骤:</text>
-			<text class="value ellipsis-3">述任到此为止六十六个字</text>
+			<view class="value rich-text">
+				<rich-text :nodes="richText"></rich-text>
+				</view>
+				
 		</view>
 		<view class="recommendation"><text>相似推荐:</text></view>
 		<!-- 相似推荐 -->
@@ -54,17 +71,26 @@
 			<view class="content">
 				<view class="modal-remain-time">
 					<text>剩余时间</text>
-					<text>11 : 11 : 11</text>
+					<uni-countdown
+						:day="detailInfo.day"
+						color="#fc8181"
+						splitorColor="#fc8181"
+						padding="0 3px"
+						:hour="detailInfo.hour"
+						:minute="detailInfo.min"
+						:second="detailInfo.sec"
+						class="time"
+					></uni-countdown>
+					<!-- <text>11 : 11 : 11</text> -->
 				</view>
 				<view class="accept-task-wrap">
-					<view class="icon iconfont icon-shoucang collection"></view>
+					<view class="icon iconfont collection" :class="detailInfo.task_like === 1 ? 'icon-shoucang1' : 'icon-shoucang'" @click="handleCollect"></view>
 					<view class="accept-task">
-						<view class="button">接受任务</view>
-						<text class="info">赚取100积分</text>
-						</view>
-					<view class="icon iconfont icon-7 share"></view>
+						<view class="button" @click="handleAcceptTask">{{detailInfo.order_status ===0 ? '接受任务':'现在去做' }}</view>
+						<text class="info" :style="{color : detailInfo.order_status ===0 ? '#50a2de':'#A1A1A1'}">{{detailInfo.order_status ===0 ? '赚取100积分':'已接受此任务' }}</text>
+					</view>
+					<view class="icon iconfont icon-7 share" @click="handleShare"></view>
 				</view>
-				
 			</view>
 		</view>
 	</view>
@@ -73,14 +99,19 @@
 <script>
 import taskListComponent from '@/components/task-list-component/task-list-component.vue';
 import uniLoadMore from '@/components/uni-load-more/uni-load-more.vue';
-var dateUtils = require('@/utils/common.js').dateUtils;
+import uniCountDown from '@/components/uni-countdown/uni-countdown.vue';
+import { getTaskDetailApi, taskCollectApi, taskOrderApi } from '@/apis/index.js';
+import { parseTime, dateUtils } from '@/utils/common.js';
 export default {
 	components: {
 		uniLoadMore,
-		taskListComponent
+		taskListComponent,
+		uniCountDown
 	},
 	data() {
 		return {
+			detailInfo: null,
+			taskButtonText:'接受任务',
 			banner: '',
 			labels: ['学生专属', '热门推荐', '轻松任务'],
 			listData: [],
@@ -91,24 +122,20 @@ export default {
 				contentdown: '上拉加载更多',
 				contentrefresh: '加载中',
 				contentnomore: '没有更多'
-			}
+			},
+			richText:'' // 富文本
 		};
 	},
 	onLoad(event) {
-		// // TODO 后面把参数名替换成 payload
-		// const payload = event.detailDate || event.payload;
-		// // 目前在某些平台参数会被主动 decode，暂时这样处理。
+		const taskDetailId = event.taskDetailId;
+		this.getTaskDetaiInfo(taskDetailId);
+		// 目前在某些平台参数会被主动 decode，暂时这样处理。
 		// try {
 		// 	this.banner = JSON.parse(decodeURIComponent(payload));
 		// } catch (error) {
 		// 	this.banner = JSON.parse(payload);
 		// }
-		// uni.setNavigationBarTitle({
-		// 	title: "任务详情"
-		// });
-
-		// this.getDetail();
-		this.getList();
+		// this.getList();
 	},
 	onPullDownRefresh() {
 		setTimeout(function() {
@@ -124,6 +151,49 @@ export default {
 	},
 
 	methods: {
+		//详情信息
+		getTaskDetaiInfo(taskDetailId) {
+			getTaskDetailApi({ id: Number(taskDetailId) }).then(res => {
+				if (res.code !== 0) return;
+				const times = parseTime(res.data.remaining_time);
+				let detailInfo = {
+					...res.data,
+					day: times.day,
+					hour: times.hour,
+					min: times.min,
+					sec: times.sec
+				};
+				this.detailInfo = detailInfo;
+				this.richText = detailInfo.content.replace(/\<img/gi, '<img class="richImg" style="width:100%;display: inline-block;vertical-align: middle;"');
+				console.log('richText', this.richText);
+			});
+		},
+		//收藏
+		handleCollect() {
+			const { id } = this.detailInfo;
+			taskCollectApi({ id }).then(res => {
+				if (res.code !== 0) return;
+				uni.showToast({
+					title:res.data.status === 0 ? "取消收藏": `收藏成功!\r\n可在收藏夹查看此任务`,
+					icon:"none",
+					duration:2000
+				})
+				this.getTaskDetaiInfo(id);
+			});
+		},
+		//接受任务
+		handleAcceptTask() {
+			const { id } = this.detailInfo;
+			taskOrderApi({ id }).then(res => {
+				if (res.code !== 0) return;
+				this.getTaskDetaiInfo(id);
+				this.taskButtonText="现在去做";
+			});
+		},
+		//分享
+		handleShare(){
+			const { id } = this.detailInfo;
+		},
 		getList() {
 			var data = {
 				column: 'id,post_id,title,author_name,cover,published_at' //需要的字段名

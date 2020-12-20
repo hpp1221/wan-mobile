@@ -24,7 +24,14 @@
 			<!-- nav -->
 			<scroll-view scroll-x class="navs">
 				<view class="items">
-					<view class="nav-item" :class="item.id == tabSelected ? 'nav-select-item' : ''" v-for="(item, index) in navs" :key="item.id" @tap="tabSelect" :data-id="item.id">
+					<view
+						class="nav-item"
+						:class="item.id == tabSelected ? 'nav-select-item' : ''"
+						v-for="(item, index) in navs"
+						:key="item.id"
+						@tap="tabSelect"
+						:data-id="item.id"
+					>
 						{{ item.name }}
 					</view>
 				</view>
@@ -48,8 +55,8 @@
 <script>
 import taskListComponent from '@/components/task-list-component/task-list-component.vue';
 import uniLoadMore from '@/components/uni-load-more/uni-load-more.vue';
-	import {formatDuring,dateUtils} from '@/utils/common.js';
-import {getCategoryListApi,getTaskListApi} from '@/apis/index.js';
+import { parseTime, dateUtils } from '@/utils/common.js';
+import { getCategoryListApi, getTaskListApi } from '@/apis/index.js';
 export default {
 	components: {
 		uniLoadMore,
@@ -62,7 +69,7 @@ export default {
 				{ id: 2, src: 'url2', img: '/static/temp/banner3.jpg' },
 				{ id: 3, src: 'url3', img: '/static/temp/banner4.jpg' }
 			],
-			navs: [{id:-1,name:'全部'}],
+			navs: [{ id: -1, name: '全部' }],
 			conditions: [
 				{
 					text: '开始时间',
@@ -88,10 +95,12 @@ export default {
 			tabSelected: -1,
 			conditionSelected: 0,
 			listData: [],
-			taskData:[],
-			pageInfo:{
-				page:1,
-				total:0
+			taskData: [],
+			timer: '',
+			timeStr: '',
+			pageInfo: {
+				page: 1,
+				total: 0
 			},
 			last_id: '',
 			reload: false,
@@ -105,15 +114,11 @@ export default {
 		};
 	},
 	onLoad() {
-		// uni.showToast({
-		// 	title:'ffff',
-		// 	duration:2000
-		// })
 		// this.adpid = this.$adpid;
 		// this.getList();
 		this.getCategoryList();
 		this.getTaskList();
-		
+		clearInterval(this.timer);
 	},
 	onPullDownRefresh() {
 		setTimeout(function() {
@@ -123,13 +128,12 @@ export default {
 		this.getTaskList();
 	},
 	onReachBottom() {
-		if(!this.reload){
+		if (!this.reload) {
 			this.reload = true;
 			this.status = 'more';
-			this.pageInfo.page +=1;
+			this.pageInfo.page += 1;
 			this.getTaskList();
 		}
-	
 	},
 
 	methods: {
@@ -144,46 +148,46 @@ export default {
 			};
 			this.$set(this.conditions, this.conditionSelected, obj);
 		},
-		getCategoryList(){
-		
-			getCategoryListApi().then(res=>{
-				uni.showToast({
-					title:JSON.stringify(res)
-				})
-				if(res.code !== 0)return;
-			
-				this.navs = [...this.navs,...res.data];
-			})
+		getCategoryList() {
+			getCategoryListApi().then(res => {
+				if (res.code !== 0) return;
+				this.navs = [...this.navs, ...res.data];
+			});
 		},
-		getTaskList(){
-			const params ={
-				page:this.pageInfo.page,
-				name:'',
-				category_id:0,
-				sort_type:1
+		getTaskList() {
+			const params = {
+				page: this.pageInfo.page,
+				name: '',
+				category_id: 0,
+				sort_type: 1
 			};
 			this.reload = true;
-			getTaskListApi(params).then(res=>{
-				if(res.code !== 0)return this.reload = false,this.pageInfo = {page:1,total:0};
+			getTaskListApi(params).then(res => {
+				let self = this;
+				if (res.code !== 0) return (this.reload = false), (this.pageInfo = { page: 1, total: 0 });
 				const list = res.data.data;
-					const total = res.data.total;
-					if(list){
-						list.map(item=>{
-							item.remaining_time=formatDuring(item.remaining_time)
-						});
-						this.taskData = [...this.taskData,...list];
-						if(this.taskData.length >=total){
-							this.reload = true;
-							this.status="nomore";
-						}else{
-							this.reload = false;
-							this.status="loading";
-						}
-					}else{
+				const total = res.data.total;
+				if (list) {
+					list.map(item=>{
+						let times = parseTime(item.remaining_time);
+						item.day = times.day;
+						item.hour = times.hour;
+						item.min = times.min;
+						item.sec = times.sec;
+					});
+					this.taskData = [...this.taskData, ...list];
+					if (this.taskData.length >= total) {
 						this.reload = true;
-						this.status="nomore";
+						this.status = 'nomore';
+					} else {
+						this.reload = false;
+						this.status = 'loading';
 					}
-			})
+				} else {
+					this.reload = true;
+					this.status = 'nomore';
+				}
+			});
 		},
 		getList() {
 			var data = {
@@ -225,7 +229,7 @@ export default {
 				});
 			});
 			return newItems;
-		},
+		}
 		// aderror(e) {
 		// 	console.log('aderror: ' + JSON.stringify(e.detail));
 		// }

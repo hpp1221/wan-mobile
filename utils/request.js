@@ -1,10 +1,15 @@
 let BaseUrl;
-
-if (process.env.NODE_ENV === 'development') {
-	BaseUrl = 'http://47.96.4.213';
-} else {
-	BaseUrl = 'http://47.96.4.213';
-};
+// #ifdef H5
+BaseUrl='/api'
+// #endif
+// #ifdef APP-PLUS
+BaseUrl='/http://47.96.4.213'
+// #endif
+// if (process.env.NODE_ENV === 'development') {
+// 	BaseUrl = 'http://47.96.4.213';
+// } else {
+// 	BaseUrl = 'http://47.96.4.213';
+// };
 
 const request = (options) => {
 	return new Promise((resolve, reject) => {

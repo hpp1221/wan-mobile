@@ -1,0 +1,101 @@
+.product-list {
+	width: 100%;
+	.uni-list-cell {
+		width: 100%;
+		height: 120px;
+		background: #ffffff;
+		box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.21);
+		border-radius: 8px;
+		margin-bottom: 8px;
+		.uni-media-list {
+			// padding: 7px 20px;
+			box-sizing: border-box;
+			display: flex;
+			width: 100%;
+			height: 100%;
+			.img-wrap {
+				box-sizing: border-box;
+				width: 160px;
+				height: 100%;
+				padding: 6.944444rpx;
+				position: relative;
+				// border-radius: 8px 0 0 8px;
+				.uni-media-list-logo {
+					width: 100%;
+					height: 100%;
+				}
+				.remian-time {
+					width: 100%;
+					position: absolute;
+					bottom: 9.722222rpx;
+					left: 50%;
+					transform: translateX(-50%);
+					display: flex;
+					justify-content: center;
+					.num-info-time {
+						font-size: 16.666666rpx;
+						color: #ffffff;
+						margin-right: 5.555555rpx;
+					}
+					.num {
+						font-size: 16.666666rpx;
+						font-weight: 500;
+					}
+				}
+			}
+
+			.uni-media-list-body {
+				box-sizing: border-box;
+				height: 100%;
+				justify-content: space-around;
+				padding: 9.722222rpx 13.888888rpx 9.722222rpx 13.888888rpx;
+				flex: 1;
+				overflow: hidden;
+				.specific-con {
+					font-size: 16.666666rpx;
+					.num {
+						color: #51a6df;
+					}
+					.num-info-person {
+						color: #ffffff;
+					}
+					.num-info-person {
+						margin-left: 5.555555rpx;
+						color: #bbbbbb;
+					}
+					.num-info-time {
+						margin-right: 5.555555rpx;
+					}
+				}
+				.task-name,
+				.task-title {
+					height: 30.555555rpx;
+					font-size: 22.222222rpx;
+					color: #424242;
+					line-height: 30.555555rpx;
+				}
+				.task-title {
+					padding: 8.333333rpx 0 6.944444rpx 0;
+					font-size: 15.277777rpx;
+					color: #a0a0a0;
+				}
+				.task-content {
+					display: flex;
+					justify-content: flex-end;
+					.task-integral {
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						.num {
+							padding: 4.166666rpx 16.666666rpx;
+							color: #ffffff;
+							text-align: center;
+							background: linear-gradient(135deg, #53dcee 0%, #50a0dd 44%, #5a4ac3 100%);
+							border-radius: 5px;
+						}
+					}
+				}
+			}
+		}
+	}
+}

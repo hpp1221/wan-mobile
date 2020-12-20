@@ -53,5 +53,6 @@
 		font-family: uniicons;
 		text-decoration: none;
 		text-align: center;
+		font-weight: 500;
 	}
 </style>

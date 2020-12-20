@@ -127,6 +127,9 @@ export default {
 		};
 	},
 	onLoad(event) {
+		// uni.setNavigationBarTitle({
+		// 	title:"任务详情"
+		// });
 		const taskDetailId = event.taskDetailId;
 		this.getTaskDetaiInfo(taskDetailId);
 		// 目前在某些平台参数会被主动 decode，暂时这样处理。
@@ -165,7 +168,6 @@ export default {
 				};
 				this.detailInfo = detailInfo;
 				this.richText = detailInfo.content.replace(/\<img/gi, '<img class="richImg" style="width:100%;display: inline-block;vertical-align: middle;"');
-				console.log('richText', this.richText);
 			});
 		},
 		//收藏

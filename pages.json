@@ -7,34 +7,33 @@
 				"enablePullDownRefresh": false,
 				"titleNView": false
 			}
-		
+
 		},
 		{
-		    "path" : "pages/find/task-list/task-list",
-		    "style" :                                                                                    
-		    {
-		        "navigationBarTitleText": "",
-				"navigationStyle":"custom",
-		        "app-plus": {
-					"titleNView":false
+			"path": "pages/find/task-list/task-list",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleNView": false
 				}
-		    }
-		    
-		}, 
+			}
+
+		},
 		{
 			"path": "pages/find/task-detail/task-detail",
 			"style": {
 				"navigationBarTitleText": "任务详情",
-				"navigationBarBackgroundColor":"#F2F2F2",
-				"app-plus":{
-					"titleNView":{
-						"titleColor":"#6193E7",
-						"backButton":{
-							"color":"#6193E7"
+				"navigationBarBackgroundColor": "#F2F2F2",
+				"app-plus": {
+					"titleNView": {
+						"titleColor": "#6193E7",
+						"backButton": {
+							"color": "#6193E7"
 						}
 					}
 				}
-				
+
 			}
 		},
 		{
@@ -49,26 +48,39 @@
 				}
 			}
 
+		}, {
+			"path": "pages/personal-center/personal/personal",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom"
+			}
+
+		},
+		{
+			"path": "pages/personal-center/personal-info/personal-info",
+			"style": {
+				"navigationBarTitleText": "个人资料",
+				"navigationBarBackgroundColor": "#F2F2F2",
+				"app-plus": {
+					"titleNView": {
+						"titleColor": "#6193E7",
+						"backButton": {
+							"color": "#6193E7"
+						}
+					}
+				}
+			}
+		
+		},
+		{
+			"path": "pages/mission-square/list/list",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
 		}
-        ,{
-            "path" : "pages/personal-center/personal/personal",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "navigationStyle": "custom"
-            }
-            
-        }
-        ,{
-            "path" : "pages/mission-square/list/list",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-    ],
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",

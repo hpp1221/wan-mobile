@@ -40,11 +40,14 @@
 				</block>
 			</view>
 			<view class="completed-wrap">
-				<view class="img"></view>
-				<view class="completed">
-					<text class="person">2000</text>
-					人完成
+				<view class="content"> 
+					<view class="img"></view>
+					<view class="completed">
+						<text class="person">2000</text>
+						人完成
+					</view>
 				</view>
+				
 			</view>
 		</view>
 		<view class="task-labels">
@@ -86,7 +89,7 @@
 				<view class="accept-task-wrap">
 					<view class="icon iconfont collection" :class="detailInfo.task_like === 1 ? 'icon-shoucang1' : 'icon-shoucang'" @click="handleCollect"></view>
 					<view class="accept-task">
-						<view class="button" @click="handleAcceptTask">{{detailInfo.order_status ===0 ? '接受任务':'现在去做' }}</view>
+						<view @click="handleAcceptTask" :class="detailInfo.order_status ===0 ? 'button':'has-button'">{{detailInfo.order_status ===0 ? '接受任务':'现在去做' }}</view>
 						<text class="info" :style="{color : detailInfo.order_status ===0 ? '#50a2de':'#A1A1A1'}">{{detailInfo.order_status ===0 ? '赚取100积分':'已接受此任务' }}</text>
 					</view>
 					<view class="icon iconfont icon-7 share" @click="handleShare"></view>

@@ -18,7 +18,7 @@
 			<!-- 轮播图 -->
 			<view class="swiper-box">
 				<swiper circular="true" autoplay="true">
-					<swiper-item v-for="swiper in swiperList" :key="swiper.id"><image :src="swiper.img" @tap="toSwiper(swiper)"></image></swiper-item>
+					<swiper-item v-for="swiper in swiperList" :key="swiper.id"><image :src="swiper.pic_url" @tap="toSwiper(swiper)"></image></swiper-item>
 				</swiper>
 			</view>
 			<!-- nav -->
@@ -56,7 +56,7 @@
 import taskListComponent from '@/components/task-list-component/task-list-component.vue';
 import uniLoadMore from '@/components/uni-load-more/uni-load-more.vue';
 import { parseTime, dateUtils } from '@/utils/common.js';
-import { getCategoryListApi, getTaskListApi } from '@/apis/index.js';
+import { getCategoryListApi, getTaskListApi ,getAdvListApi} from '@/apis/index.js';
 export default {
 	components: {
 		uniLoadMore,
@@ -116,6 +116,7 @@ export default {
 	onLoad() {
 		// this.adpid = this.$adpid;
 		// this.getList();
+		this.getAdvList();
 		this.getCategoryList();
 		this.getTaskList();
 		clearInterval(this.timer);
@@ -137,6 +138,7 @@ export default {
 	},
 
 	methods: {
+		
 		tabSelect(e) {
 			this.tabSelected = e.currentTarget.dataset.id;
 		},
@@ -147,6 +149,12 @@ export default {
 				sortUp: !this.conditions[this.conditionSelected].sortUp
 			};
 			this.$set(this.conditions, this.conditionSelected, obj);
+		},
+		getAdvList(){
+			getAdvListApi({position:1}).then(res=>{
+				if(res.code !==0) return;
+				this.swiperList = res.data;
+			})
 		},
 		getCategoryList() {
 			getCategoryListApi().then(res => {

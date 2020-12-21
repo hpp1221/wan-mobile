@@ -1,9 +1,7 @@
 let BaseUrl;
-// #ifdef H5
-BaseUrl='/api'
-// #endif
+BaseUrl='/api';
 // #ifdef APP-PLUS
-BaseUrl='/http://47.96.4.213'
+// BaseUrl='http://47.96.4.213'
 // #endif
 // if (process.env.NODE_ENV === 'development') {
 // 	BaseUrl = 'http://47.96.4.213';

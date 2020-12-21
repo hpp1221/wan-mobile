@@ -2,9 +2,9 @@
 	padding: 0px 33.333333rpx 0 33.333333rpx;
 	.banner {
 		height: 309.722222rpx;
-		uni-swiper{
+		uni-swiper {
 			height: 100%;
-			uni-image{
+			uni-image {
 				width: 100%;
 			}
 		}
@@ -68,11 +68,12 @@
 		align-items: flex-end;
 		justify-content: space-between;
 		.labels-wrap {
+			flex: 1;
 			display: flex;
 			flex-wrap: wrap;
 			.single-label {
 				padding: 4.166666rpx 30.555555rpx;
-				margin-bottom:6.944444rpx;
+				margin-bottom: 6.944444rpx;
 				background: #ffe3e3;
 				border-radius: 20.833333rpx;
 				border: 1px solid #fc8181;
@@ -86,26 +87,31 @@
 			}
 		}
 		.completed-wrap {
-			.img {
-				width: 166.666666rpx;
-				height: 52.777777rpx;
-				background: #d8d8d8;
-				margin-bottom: 9.722222rpx;
-			}
-			.completed {
-				color: #566ece;
-				display: flex;
-				align-items: center;
-				.person {
-					text-align: center;
-					width: 63.888888rpx;
-					padding: 4.166666rpx 8.333333rpx;
-					background: #566ece;
-					border-radius: 2.777777rpx;
-					color: #ffffff;
-					margin-right: 6.944444rpx;
-					font-size: 16.666666rpx;
-					font-weight: 500;
+			width: 250rpx;
+			display: flex;
+			justify-content: flex-end;
+			.content {
+				.img {
+					width: 166.666666rpx;
+					height: 52.777777rpx;
+					background: #d8d8d8;
+					margin-bottom: 9.722222rpx;
+				}
+				.completed {
+					color: #566ece;
+					display: flex;
+					align-items: center;
+					.person {
+						text-align: center;
+						width: 63.888888rpx;
+						padding: 4.166666rpx 8.333333rpx;
+						background: #566ece;
+						border-radius: 2.777777rpx;
+						color: #ffffff;
+						margin-right: 6.944444rpx;
+						font-size: 16.666666rpx;
+						font-weight: 500;
+					}
 				}
 			}
 		}
@@ -125,26 +131,23 @@
 			font-size: 25rpx;
 			color: #b6b6b6;
 		}
-		.rich-text{
-			uni-rich-text{
-				p{
+		.rich-text {
+			uni-rich-text {
+				p {
 					color: red;
-					img{
+					img {
 						width: 80%;
 					}
 				}
 			}
-			
 		}
 	}
 	rich-text .richImg {
 		width: 100%;
 		height: auto;
-		
 	}
 	.operation-step {
 		margin: 41.666666rpx 0;
-		
 	}
 	.recommendation {
 		font-size: 25rpx;
@@ -170,7 +173,7 @@
 				font-size: 16.666666rpx;
 				font-weight: 500;
 				color: #fc8181;
-				.time{
+				.time {
 					margin-left: 8.333333rpx;
 				}
 			}
@@ -191,7 +194,8 @@
 				.accept-task {
 					width: 333.333333rpx;
 					overflow: hidden;
-					.button {
+					.button,
+					.has-button {
 						width: 100%;
 						height: 63.888888rpx;
 						line-height: 63.888888rpx;
@@ -202,6 +206,9 @@
 						color: #ffffff;
 						font-size: 29.166666rpx;
 						font-weight: 500;
+					}
+					.has-button {
+						background: linear-gradient(143deg, #50a0dd 0%, #566ece 100%);
 					}
 					.info {
 						position: absolute;

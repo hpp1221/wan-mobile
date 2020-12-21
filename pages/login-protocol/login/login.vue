@@ -38,7 +38,6 @@ export default {
 	},
 	methods: {
 		onLogin() {
-			// const self = this;
 			if (!this.isAgree) {
 				uni.showToast({
 					title: '请先勾选同意下方协议',
@@ -56,27 +55,19 @@ export default {
 				if (this.code != 10086) {
 					uni.showToast({ title: '验证码不正确', icon: 'none' });
 					return false;
-				}
-				// uni.getStorage({
-				// 	key: 'push_token',
-				// 	success: function(res) {
-						// uni.showToast({
-						// 	title: JSON.stringify({
-						// 		phone: self.phoneNumber,
-						// 		code: self.code,
-						// 		push_token: res.data
-						// 	}),
-						// 	icon: 'none',
-						// 	duration: 20000
-						// });
-						
-					// }
-				// });
+				};
+				let push_token = '89';
+				uni.getStorage({
+					key: 'push_token',
+					success: function(res) {
+						push_token = res.data
+					}
+				});
 				getLogin({
 					phone: this.phoneNumber,
 					code: this.code,
-					push_token:'8798'
-				}).then(response => {
+					push_token
+				}).then(response=>{
 					if (response.code !== 0) return;
 					uni.setStorage({
 						key: 'Token',
@@ -87,7 +78,8 @@ export default {
 							});
 						}
 					});
-				});
+				}).catch(Error=>{
+				})
 			}
 		},
 		getCode() {

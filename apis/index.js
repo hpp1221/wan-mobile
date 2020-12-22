@@ -15,5 +15,7 @@ export const taskOrderApi= (params)=>API.post('/app/order/receive',params);
 export const taskCollectApi= (params)=>API.post('/app/task/like',params);
 //用户详情
 export const getUserInfoApi= (params)=>API.post('/app/user/info',params);
+//用户修改
+export const updateUserInfoApi= (params)=>API.post('/app/user/oper',params);
 //广告位列表
 export const getAdvListApi= (params)=>API.post('/app/adv/list',params);

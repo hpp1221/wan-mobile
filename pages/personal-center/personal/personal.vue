@@ -146,7 +146,7 @@ export default {
 		//进入个人资料
 		handleInPersonalInfo() {
 			uni.navigateTo({
-				url: '../personal-info/personal-info?personalInfo=' + encodeURIComponent(JSON.stringify(this.userInfo))
+				url: '../personal-info/personal-info'
 			});
 		},
 		getTaskList() {
